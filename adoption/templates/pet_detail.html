@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<div >
+    <h3>{{  pet.name|capfirst  }}</h3>
+    <p>{{pet.species}}</p>
+        {% if pet.bread %}
+            <p>Breed: {{pet.bread}}</p>
+        {% endif %}
+        <p>SEX: {{pet.sex}}</p>
+        <p>AGE : {{pet.age}}</p>
+        <p>{{pet.description}}</p>
+        {% if pet.vaccinations.all %}
+            <p>vaccinations for :</p>
+            <ul>
+                {% for vaccination in pet.vaccinations.all %}
+                <li>
+                    {{vaccination.name}}
+                </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <p>Submmited by:-  {{pet.submitter}}</p>
+        <p>submitted on:- {{pet.submission_date|date:"M d Y"}}</p>
+
+</div>
+{% endblock %}
